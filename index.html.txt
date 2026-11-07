@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+    <style>
+        body {
+            background-color: #0d1117; /* Fond sombre */
+            color: white;             /* Texte blanc */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            font-size: 50px;
+        }
+        a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bienvenue sur mon Portfolio !</h1>
+    <p>Je suis développeur / data engineer et voici mes projets.</p>
+    
+    <!-- Mettez ici le lien vers vos projets GitHub existants -->
+    <p><a href="https://github.com/votre-pseudo?tab=repositories" target="_blank">Voir mes projets sur GitHub</a></p>
+
+</body>
+</html>
