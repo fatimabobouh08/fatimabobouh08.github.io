@@ -7,45 +7,52 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Curseur personnalisé robuste (Point + Disque) */
+        /* Masquage complet du curseur par défaut de la souris */
+        *, *::before, *::after, body, button, a, input {
+            cursor: none !important;
+        }
+
         body {
-            background-color: #050508;
-            color: #f3f4f6;
+            background-color: #000000;
+            color: #ffffff;
             font-family: system-ui, -apple-system, sans-serif;
-            cursor: default;
+            overflow-x: hidden;
         }
         
-        #cursor-dot, #cursor-circle {
+        /* Curseur personnalisé (Point + Disque) */
+        #cursor-dot {
             position: fixed;
             top: 0;
             left: 0;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.15s ease-out;
-        }
-
-        #cursor-dot {
             width: 8px;
             height: 8px;
             background-color: #c084fc; /* Violet néon */
             border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
             transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px #c084fc;
         }
 
         #cursor-circle {
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(192, 132, 252, 0.4);
-            background-color: rgba(192, 132, 252, 0.03);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid rgba(192, 132, 252, 0.6);
+            background-color: rgba(192, 132, 252, 0.05);
             border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
             transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            transition: transform 0.1s ease-out, width 0.2s, height 0.2s;
         }
 
-        /* Effet de lueur violette en arrière-plan */
+        /* Lueur violette en fond sur fond noir */
         .glow-violet {
-            background: radial-gradient(circle at 15% 15%, rgba(147, 51, 234, 0.12), transparent 45%),
-                        radial-gradient(circle at 85% 85%, rgba(76, 29, 149, 0.1), transparent 50%);
+            background: radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.15), transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.1), transparent 50%);
         }
 
         .typed-cursor {
@@ -58,14 +65,14 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between glow-violet selection:bg-purple-500 selection:text-white">
+<body class="min-h-screen flex flex-col justify-between glow-violet selection:bg-purple-600 selection:text-white">
 
     <!-- Éléments du curseur personnalisé -->
     <div id="cursor-dot"></div>
     <div id="cursor-circle"></div>
 
-    <!-- Barre de navigation -->
-    <header class="sticky top-0 z-40 backdrop-blur-md bg-[#050508]/80 border-b border-purple-900/20">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-black/80 border-b border-purple-900/30">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
             <div class="text-2xl font-black tracking-wider text-white">
                 FB<span class="text-purple-500">.</span>
@@ -77,24 +84,24 @@
                 <a href="#projects" class="hover:text-purple-400 transition">Projects</a>
             </nav>
             <a href="https://github.com/fatimabobouh08" target="_blank" 
-               class="bg-purple-600 text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-purple-500 transition shadow-lg shadow-purple-600/30">
+               class="bg-purple-600 text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-purple-500 transition shadow-lg shadow-purple-600/40">
                 Resume ↗
             </a>
         </div>
     </header>
 
-    <!-- Section Principale (Hero) -->
+    <!-- Hero Section -->
     <main class="max-w-7xl mx-auto px-6 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-auto w-full">
         
         <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center space-x-2 bg-purple-950/40 text-purple-400 border border-purple-500/30 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+            <div class="inline-flex items-center space-x-2 bg-purple-950/60 text-purple-300 border border-purple-800/50 px-3.5 py-1.5 rounded-full text-xs font-semibold">
                 <span class="w-2 h-2 bg-purple-500 rounded-full animate-ping"></span>
                 <span>Available for 4-month internship</span>
             </div>
 
             <h1 class="text-6xl md:text-8xl font-black tracking-tight leading-none text-white">
                 Fatima<br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-indigo-500">BOBOUH</span>
+                <span class="text-transparent" style="-webkit-text-stroke: 1.5px rgba(192,132,252,0.8);">Bobouh</span>
             </h1>
 
             <div class="h-10 flex items-center">
@@ -108,27 +115,27 @@
             </p>
 
             <div class="flex flex-wrap gap-4 pt-2">
-                <a href="#projects" class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-3.5 rounded-xl font-bold flex items-center space-x-2 transition shadow-lg shadow-purple-600/25">
+                <a href="#projects" class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-3.5 rounded-xl font-bold flex items-center space-x-2 transition shadow-lg shadow-purple-600/30">
                     <span>View my work</span>
                     <span>→</span>
                 </a>
-                <a href="mailto:fatimabobouh08@gmail.com" class="border border-purple-900/60 hover:border-purple-500 text-gray-300 px-6 py-3.5 rounded-xl font-bold transition bg-purple-950/10">
+                <a href="mailto:fatimabobouh08@gmail.com" class="border border-purple-900/60 hover:border-purple-500 text-gray-300 px-6 py-3.5 rounded-xl font-bold transition bg-purple-950/20">
                     Contact me
                 </a>
             </div>
         </div>
 
-        <!-- Statistiques / KPI Cartes -->
+        <!-- KPI / Stat Cards -->
         <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-            <div class="bg-purple-950/20 border border-purple-900/30 p-6 rounded-2xl backdrop-blur-sm">
+            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
                 <div class="text-3xl font-extrabold text-purple-400">4ème</div>
                 <div class="text-xs text-gray-400 mt-1">Année Ingénieur à l'EILCO</div>
             </div>
-            <div class="bg-purple-950/20 border border-purple-900/30 p-6 rounded-2xl backdrop-blur-sm">
-                <div class="text-3xl font-extrabold text-fuchsia-400">4 Mois</div>
+            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
+                <div class="text-3xl font-extrabold text-purple-400">4 Mois</div>
                 <div class="text-xs text-gray-400 mt-1">Stage recherché</div>
             </div>
-            <div class="bg-purple-950/20 border border-purple-900/30 p-6 rounded-2xl backdrop-blur-sm col-span-2">
+            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl col-span-2">
                 <div class="text-lg font-bold text-white mb-1">Domaines d'expertise</div>
                 <div class="text-xs text-purple-300 font-mono">Data Engineering · IA · LLM / RAG · Full-Stack</div>
             </div>
@@ -136,8 +143,8 @@
 
     </main>
 
-    <!-- Section About me -->
-    <section id="about" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/20">
+    <!-- About Section -->
+    <section id="about" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/30">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
                 <h2 class="text-3xl font-extrabold text-white mb-4 flex items-center space-x-3">
@@ -150,7 +157,7 @@
                     Rigoureuse et curieuse, j'aime relever des défis techniques complexes, allant de l'ingestion de données massives au déploiement de modèles d'IA en production.
                 </p>
             </div>
-            <div class="bg-purple-950/10 border border-purple-900/30 p-8 rounded-3xl space-y-4">
+            <div class="bg-zinc-950 border border-purple-900/40 p-8 rounded-3xl space-y-4">
                 <div class="text-sm font-mono text-purple-400">// INFOS PERSONNELLES</div>
                 <div class="grid grid-cols-2 gap-4 text-sm">
                     <div>
@@ -174,8 +181,8 @@
         </div>
     </section>
 
-    <!-- Section Projets -->
-    <section id="projects" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/20">
+    <!-- Projects Section -->
+    <section id="projects" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/30">
         <h2 class="text-3xl font-extrabold text-white mb-2 flex items-center space-x-3">
             <span class="text-purple-500">//</span> <span>Projects</span>
         </h2>
@@ -183,84 +190,83 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            <div class="bg-purple-950/10 border border-purple-900/30 hover:border-purple-500/60 p-6 rounded-2xl transition flex flex-col justify-between">
+            <div class="bg-zinc-950 border border-purple-900/40 hover:border-purple-500/80 p-6 rounded-2xl transition flex flex-col justify-between">
                 <div>
-                    <span class="text-xs font-mono bg-purple-900/40 text-purple-300 px-3 py-1 rounded-md border border-purple-700/40">IA Générative</span>
+                    <span class="text-xs font-mono bg-purple-950/80 text-purple-300 px-3 py-1 rounded-md border border-purple-800/60">IA Générative</span>
                     <h3 class="text-xl font-bold text-white mt-4">Assistant d'Analyse Documentaire (RAG)</h3>
                     <p class="text-gray-400 text-sm mt-2">Système intelligent basé sur une architecture RAG et un LLM pour interroger des documentations techniques complexes.</p>
                 </div>
                 <div class="flex flex-wrap gap-2 mt-6">
-                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">Python</span>
-                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">LangChain</span>
-                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">FastAPI</span>
+                    <span class="text-xs bg-black text-purple-300 px-2.5 py-1 rounded font-mono border border-purple-900/50">Python</span>
+                    <span class="text-xs bg-black text-purple-300 px-2.5 py-1 rounded font-mono border border-purple-900/50">LangChain</span>
+                    <span class="text-xs bg-black text-purple-300 px-2.5 py-1 rounded font-mono border border-purple-900/50">FastAPI</span>
                 </div>
             </div>
 
-            <div class="bg-purple-950/10 border border-purple-900/30 hover:border-purple-500/60 p-6 rounded-2xl transition flex flex-col justify-between">
+            <div class="bg-zinc-950 border border-purple-900/40 hover:border-purple-500/80 p-6 rounded-2xl transition flex flex-col justify-between">
                 <div>
-                    <span class="text-xs font-mono bg-purple-900/40 text-purple-300 px-3 py-1 rounded-md border border-purple-700/40">Data Analytics</span>
+                    <span class="text-xs font-mono bg-purple-950/80 text-purple-300 px-3 py-1 rounded-md border border-purple-800/60">Data Analytics</span>
                     <h3 class="text-xl font-bold text-white mt-4">Dashboard de Pilotage Stocks & Ventes</h3>
                     <p class="text-gray-400 text-sm mt-2">Conception d'un tableau de bord décisionnel interactif pour le suivi en temps réel des performances commerciales.</p>
                 </div>
                 <div class="flex flex-wrap gap-2 mt-6">
-                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">SQL</span>
-                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">Python</span>
-                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">Power BI</span>
+                    <span class="text-xs bg-black text-purple-300 px-2.5 py-1 rounded font-mono border border-purple-900/50">SQL</span>
+                    <span class="text-xs bg-black text-purple-300 px-2.5 py-1 rounded font-mono border border-purple-900/50">Python</span>
+                    <span class="text-xs bg-black text-purple-300 px-2.5 py-1 rounded font-mono border border-purple-900/50">Power BI</span>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Section Skills & Tech Stack -->
-    <section id="skills" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/20">
+    <!-- Skills Section -->
+    <section id="skills" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/30">
         <h2 class="text-3xl font-extrabold text-white mb-8 flex items-center space-x-3">
             <span class="text-purple-500">//</span> <span>Skills & Technologies</span>
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-purple-950/10 border border-purple-900/30 p-6 rounded-2xl">
+            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
                 <h3 class="text-lg font-bold text-purple-400 mb-4">Programming & Frameworks</h3>
                 <div class="flex flex-wrap gap-2">
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Python</span>
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">SQL</span>
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Java</span>
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">FastAPI</span>
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Spring Boot</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Python</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">SQL</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Java</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">FastAPI</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Spring Boot</span>
                 </div>
             </div>
 
-            <div class="bg-purple-950/10 border border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-lg font-bold text-fuchsia-400 mb-4">Data & AI</h3>
+            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
+                <h3 class="text-lg font-bold text-purple-400 mb-4">Data & AI</h3>
                 <div class="flex flex-wrap gap-2">
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">LLMs & RAG</span>
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">pandas</span>
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">scikit-learn</span>
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Power BI</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">LLMs & RAG</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">pandas</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">scikit-learn</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Power BI</span>
                 </div>
             </div>
 
-            <div class="bg-purple-950/10 border border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-lg font-bold text-indigo-400 mb-4">Tools & Cloud</h3>
+            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
+                <h3 class="text-lg font-bold text-purple-400 mb-4">Tools & Cloud</h3>
                 <div class="flex flex-wrap gap-2">
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Git / GitHub</span>
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Docker</span>
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Linux</span>
-                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">CI/CD</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Git / GitHub</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Docker</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Linux</span>
+                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">CI/CD</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-8 text-gray-500 text-sm border-t border-purple-900/20">
-        <p>© 2026 Fatima Bobouh. Designed with passion.</p>
+    <footer class="text-center py-8 text-gray-500 text-sm border-t border-purple-900/30">
+        <p>© 2026 Fatima Bobouh. All rights reserved.</p>
         <p class="mt-1 text-purple-400 font-mono text-xs">fatimabobouh08@gmail.com</p>
     </footer>
 
-    <!-- Script JavaScript pour le curseur robuste et le texte dynamique -->
+    <!-- Script JavaScript du Curseur et du Texte -->
     <script>
-        // Gestion du curseur personnalisé
         const dot = document.getElementById('cursor-dot');
         const circle = document.getElementById('cursor-circle');
 
@@ -269,12 +275,24 @@
             const posY = e.clientY;
 
             dot.style.transform = `translate(${posX}px, ${posY}px)`;
-            
-            // Effet d'inertie fluide sur le cercle externe
             circle.style.transform = `translate(${posX}px, ${posY}px)`;
         });
 
-        // Effet d'écriture automatique (Typed effect)
+        // Animation d'agrandissement du disque au survol d'éléments cliquables
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                circle.style.width = '60px';
+                circle.style.height = '60px';
+                circle.style.backgroundColor = 'rgba(192, 132, 252, 0.15)';
+            });
+            el.addEventListener('mouseleave', () => {
+                circle.style.width = '40px';
+                circle.style.height = '40px';
+                circle.style.backgroundColor = 'rgba(192, 132, 252, 0.05)';
+            });
+        });
+
+        // Animation de texte (Typed effect)
         const words = [
             "Élève Ingénieure en Informatique (EILCO)",
             "Spécialisée en Data Science & IA Générative",
