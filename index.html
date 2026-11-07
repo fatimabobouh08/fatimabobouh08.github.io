@@ -7,7 +7,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Completely hide default mouse cursor */
+        /* Masquage complet du curseur par défaut */
         *, *::before, *::after, body, button, a, input {
             cursor: none !important;
         }
@@ -19,19 +19,19 @@
             overflow-x: hidden;
         }
         
-        /* Custom robust cursor (Dot + Disk) */
+        /* Curseur robuste (Point + Disque) */
         #cursor-dot {
             position: fixed;
             top: 0;
             left: 0;
             width: 8px;
             height: 8px;
-            background-color: #c084fc; /* Neon Purple */
+            background-color: #c084fc;
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px #c084fc;
+            box-shadow: 0 0 12px #c084fc;
         }
 
         #cursor-circle {
@@ -40,19 +40,18 @@
             left: 0;
             width: 40px;
             height: 40px;
-            border: 1.5px solid rgba(192, 132, 252, 0.6);
-            background-color: rgba(192, 132, 252, 0.05);
+            border: 1.5px solid rgba(192, 132, 252, 0.5);
+            background-color: rgba(192, 132, 252, 0.04);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9998;
             transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
+            transition: transform 0.08s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
         }
 
-        /* Subtle violet background glow on pure black */
         .glow-violet {
-            background: radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.12), transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.08), transparent 50%);
+            background: radial-gradient(circle at 15% 15%, rgba(168, 85, 247, 0.1), transparent 45%),
+                        radial-gradient(circle at 85% 85%, rgba(147, 51, 234, 0.07), transparent 50%);
         }
 
         .typed-cursor {
@@ -67,13 +66,13 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between glow-violet selection:bg-purple-600 selection:text-white">
 
-    <!-- Custom Cursor Elements -->
+    <!-- Curseur interactif -->
     <div id="cursor-dot"></div>
     <div id="cursor-circle"></div>
 
-    <!-- Navigation -->
-    <header class="sticky top-0 z-40 backdrop-blur-md bg-black/80 border-b border-purple-900/30">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-black/80 border-b border-purple-900/20">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
             <div class="text-2xl font-black tracking-wider text-white">
                 FB<span class="text-purple-500">.</span>
             </div>
@@ -84,19 +83,19 @@
                 <a href="#projects" class="hover:text-purple-400 transition">Projects</a>
             </nav>
             <a href="https://github.com/fatimabobouh08" target="_blank" 
-               class="bg-purple-600 text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-purple-500 transition shadow-lg shadow-purple-600/40">
+               class="bg-purple-600 text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-purple-500 transition shadow-lg shadow-purple-600/30">
                 Resume ↗
             </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <main class="max-w-7xl mx-auto px-6 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-auto w-full">
+    <!-- Main Hero Section -->
+    <main class="max-w-7xl mx-auto px-8 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-auto w-full">
         
         <div class="lg:col-span-7 space-y-6">
             <div class="inline-flex items-center space-x-2 bg-purple-950/60 text-purple-300 border border-purple-800/50 px-3.5 py-1.5 rounded-full text-xs font-semibold">
                 <span class="w-2 h-2 bg-purple-500 rounded-full animate-ping"></span>
-                <span>Available for a 4-month internship</span>
+                <span>Available for a 4-month internship (PFA)</span>
             </div>
 
             <h1 class="text-6xl md:text-8xl font-black tracking-tight leading-none text-white">
@@ -111,7 +110,7 @@
             </div>
 
             <p class="text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl">
-                I turn data into concrete solutions. Computer Science Engineering student passionate about Data Science and Generative AI (LLM, RAG).
+                I design scalable data architectures, build AI-driven pipelines, and deliver reliable, production-grade solutions for complex systems.
             </p>
 
             <div class="flex flex-wrap gap-4 pt-2">
@@ -119,46 +118,46 @@
                     <span>View my work</span>
                     <span>→</span>
                 </a>
-                <a href="mailto:fatimabobouh08@gmail.com" class="border border-purple-900/60 hover:border-purple-500 text-gray-300 px-6 py-3.5 rounded-xl font-bold transition bg-purple-950/20">
-                    Contact me
+                <a href="#contact" class="border border-purple-900/60 hover:border-purple-500 text-gray-300 px-6 py-3.5 rounded-xl font-bold transition bg-zinc-950">
+                    Download CV
                 </a>
             </div>
         </div>
 
-        <!-- KPI / Stat Cards -->
+        <!-- KPI Cards -->
         <div class="lg:col-span-5 grid grid-cols-2 gap-4">
             <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
                 <div class="text-3xl font-extrabold text-purple-400">4th</div>
-                <div class="text-xs text-gray-400 mt-1">Year Engineering Student at EILCO</div>
+                <div class="text-xs text-gray-400 mt-1">Year Engineering Student</div>
             </div>
             <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
-                <div class="text-3xl font-extrabold text-purple-400">4 Months</div>
-                <div class="text-xs text-gray-400 mt-1">Internship sought</div>
+                <div class="text-3xl font-extrabold text-purple-400">4 Mos</div>
+                <div class="text-xs text-gray-400 mt-1">Internship duration</div>
             </div>
             <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl col-span-2">
-                <div class="text-lg font-bold text-white mb-1">Core Focus</div>
-                <div class="text-xs text-purple-300 font-mono">Data Engineering · AI · LLM / RAG · Full-Stack</div>
+                <div class="text-lg font-bold text-white mb-1">Core Stack</div>
+                <div class="text-xs text-purple-300 font-mono">Python · SQL · LLM/RAG · Spark · FastAPI · React</div>
             </div>
         </div>
 
     </main>
 
     <!-- About Section -->
-    <section id="about" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/30">
+    <section id="about" class="max-w-7xl mx-auto px-8 py-20 w-full border-t border-purple-900/20">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
                 <h2 class="text-3xl font-extrabold text-white mb-4 flex items-center space-x-3">
                     <span class="text-purple-500">//</span> <span>About me</span>
                 </h2>
                 <p class="text-gray-300 text-lg leading-relaxed mb-4">
-                    As a computer science engineering student at EILCO, I specialize in designing robust data platforms, advanced analytics, and artificial intelligence architectures.
+                    I'm Fatima, a computer science engineering student at EILCO, specializing in data engineering, analytics frameworks, and AI-enabled information systems.
                 </p>
                 <p class="text-gray-400 text-base leading-relaxed">
-                    Rigorous and curious, I love tackling complex technical challenges ranging from massive data ingestion to deploying production-grade AI models.
+                    I focus on robust, scalable, business-aligned solutions that improve reliability, enhance decision-making, and support long-term technological growth.
                 </p>
             </div>
             <div class="bg-zinc-950 border border-purple-900/40 p-8 rounded-3xl space-y-4">
-                <div class="text-sm font-mono text-purple-400">// PERSONAL INFO</div>
+                <div class="text-sm font-mono text-purple-400">// CONTACT & INFO</div>
                 <div class="grid grid-cols-2 gap-4 text-sm">
                     <div>
                         <span class="text-gray-500 block">Location</span>
@@ -173,20 +172,91 @@
                         <span class="text-white font-medium">EILCO (Engineering Cycle)</span>
                     </div>
                     <div>
-                        <span class="text-gray-500 block">Availability</span>
-                        <span class="text-white font-medium">4-month Internship</span>
+                        <span class="text-gray-500 block">Languages</span>
+                        <span class="text-white font-medium">French · English</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/30">
+    <!-- Experience Section -->
+    <section id="experience" class="max-w-7xl mx-auto px-8 py-20 w-full border-t border-purple-900/20">
         <h2 class="text-3xl font-extrabold text-white mb-2 flex items-center space-x-3">
-            <span class="text-purple-500">//</span> <span>Projects</span>
+            <span class="text-purple-500">//</span> <span>Career & Experience</span>
         </h2>
-        <p class="text-gray-400 mb-10">A curated selection of recent projects in AI, Data, and Software Development.</p>
+        <p class="text-gray-400 mb-10">What I've been working on and academic background.</p>
+
+        <div class="space-y-8 border-l-2 border-purple-900/40 pl-6 ml-2">
+            <div>
+                <span class="text-xs font-mono text-purple-400">2025 — Present · EILCO</span>
+                <h3 class="text-xl font-bold text-white mt-1">Computer Science Engineering Student (4th Year)</h3>
+                <p class="text-gray-400 text-sm mt-1">Specialization in Data Engineering, Software Architecture, and Artificial Intelligence.</p>
+            </div>
+            <div>
+                <span class="text-xs font-mono text-purple-400">2026 · Capgemini</span>
+                <h3 class="text-xl font-bold text-white mt-1">Java Development Experience</h3>
+                <p class="text-gray-400 text-sm mt-1">Contributing to enterprise software development and robust backend solutions.</p>
+            </div>
+            <div>
+                <span class="text-xs font-mono text-purple-400">2025 · Carrefour</span>
+                <h3 class="text-xl font-bold text-white mt-1">Data & Operations Experience</h3>
+                <p class="text-gray-400 text-sm mt-1">Handling large-scale operational data flow and process optimization.</p>
+            </div>
+            <div>
+                <span class="text-xs font-mono text-gray-500">2023 — 2025 · Lycée Chrestien de Troyes</span>
+                <h3 class="text-xl font-bold text-white mt-1">CPGE PSI (Preparatory Classes)</h3>
+                <p class="text-gray-400 text-sm mt-1">Intensive scientific curriculum focusing on advanced mathematics and physics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="max-w-7xl mx-auto px-8 py-20 w-full border-t border-purple-900/20">
+        <h2 class="text-3xl font-extrabold text-white mb-8 flex items-center space-x-3">
+            <span class="text-purple-500">//</span> <span>Skills & Technologies</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
+                <h3 class="text-lg font-bold text-purple-400 mb-4">Programming & Frameworks</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Python</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">SQL</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Java</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">FastAPI</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Spring Boot</span>
+                </div>
+            </div>
+
+            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
+                <h3 class="text-lg font-bold text-purple-400 mb-4">Data & AI</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">LLMs & RAG</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">pandas</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">scikit-learn</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Power BI</span>
+                </div>
+            </div>
+
+            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
+                <h3 class="text-lg font-bold text-purple-400 mb-4">Tools & DevOps</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Git / GitHub</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Docker</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Linux</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">CI/CD</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="max-w-7xl mx-auto px-8 py-20 w-full border-t border-purple-900/20">
+        <h2 class="text-3xl font-extrabold text-white mb-2 flex items-center space-x-3">
+            <span class="text-purple-500">//</span> <span>Featured Projects</span>
+        </h2>
+        <p class="text-gray-400 mb-10">A curated selection of data engineering, AI, and software projects.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
@@ -194,7 +264,7 @@
                 <div>
                     <span class="text-xs font-mono bg-purple-950/80 text-purple-300 px-3 py-1 rounded-md border border-purple-800/60">Generative AI</span>
                     <h3 class="text-xl font-bold text-white mt-4">Document Analysis Assistant (RAG)</h3>
-                    <p class="text-gray-400 text-sm mt-2">Intelligent system based on a RAG architecture and LLM to query complex technical documentations efficiently.</p>
+                    <p class="text-gray-400 text-sm mt-2">Intelligent system leveraging RAG architecture and LLMs to query and extract insights from complex technical documents.</p>
                 </div>
                 <div class="flex flex-wrap gap-2 mt-6">
                     <span class="text-xs bg-black text-purple-300 px-2.5 py-1 rounded font-mono border border-purple-900/50">Python</span>
@@ -207,7 +277,7 @@
                 <div>
                     <span class="text-xs font-mono bg-purple-950/80 text-purple-300 px-3 py-1 rounded-md border border-purple-800/60">Data Analytics</span>
                     <h3 class="text-xl font-bold text-white mt-4">Inventory & Sales Dashboard</h3>
-                    <p class="text-gray-400 text-sm mt-2">Design of an interactive decision-making dashboard for real-time tracking of business and sales performance.</p>
+                    <p class="text-gray-400 text-sm mt-2">Interactive analytics dashboard designed to monitor stock levels and analyze sales performance in real-time.</p>
                 </div>
                 <div class="flex flex-wrap gap-2 mt-6">
                     <span class="text-xs bg-black text-purple-300 px-2.5 py-1 rounded font-mono border border-purple-900/50">SQL</span>
@@ -219,53 +289,31 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/30">
-        <h2 class="text-3xl font-extrabold text-white mb-8 flex items-center space-x-3">
-            <span class="text-purple-500">//</span> <span>Skills & Technologies</span>
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
-                <h3 class="text-lg font-bold text-purple-400 mb-4">Programming & Frameworks</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Python</span>
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">SQL</span>
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Java</span>
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">FastAPI</span>
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Spring Boot</span>
-                </div>
-            </div>
-
-            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
-                <h3 class="text-lg font-bold text-purple-400 mb-4">Data & AI</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">LLMs & RAG</span>
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">pandas</span>
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">scikit-learn</span>
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Power BI</span>
-                </div>
-            </div>
-
-            <div class="bg-zinc-950 border border-purple-900/40 p-6 rounded-2xl">
-                <h3 class="text-lg font-bold text-purple-400 mb-4">Tools & Cloud</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Git / GitHub</span>
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Docker</span>
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">Linux</span>
-                    <span class="bg-purple-950/50 text-purple-200 border border-purple-800/50 px-3 py-1 rounded-lg text-xs font-mono">CI/CD</span>
-                </div>
+    <!-- Contact Section with Download CV -->
+    <section id="contact" class="max-w-7xl mx-auto px-8 py-20 w-full text-center border-t border-purple-900/20">
+        <div class="bg-zinc-950 border border-purple-900/40 p-12 rounded-3xl max-w-3xl mx-auto">
+            <h2 class="text-3xl font-extrabold text-white mb-4">Let's Connect</h2>
+            <p class="text-gray-400 mb-8">
+                Currently looking for a 4-month internship (PFA) starting soon. Reach out via email or check my resume!
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:fatimabobouh08@gmail.com" class="bg-purple-600 text-white font-bold px-6 py-3.5 rounded-xl hover:bg-purple-500 transition shadow-lg shadow-purple-600/30">
+                    fatimabobouh08@gmail.com
+                </a>
+                <!-- Bouton Download CV -->
+                <a href="https://github.com/fatimabobouh08" target="_blank" class="border border-purple-900/60 hover:border-purple-500 text-gray-200 font-bold px-6 py-3.5 rounded-xl transition bg-black">
+                    Download CV ↗
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-8 text-gray-500 text-sm border-t border-purple-900/30">
+    <footer class="text-center py-8 text-gray-500 text-sm border-t border-purple-900/20">
         <p>© 2026 Fatima Bobouh. All rights reserved.</p>
-        <p class="mt-1 text-purple-400 font-mono text-xs">fatimabobouh08@gmail.com</p>
     </footer>
 
-    <!-- Script JavaScript for Cursor and Text Animation -->
+    <!-- Script Curseur & Animation Texte -->
     <script>
         const dot = document.getElementById('cursor-dot');
         const circle = document.getElementById('cursor-circle');
@@ -278,7 +326,6 @@
             circle.style.transform = `translate(${posX}px, ${posY}px)`;
         });
 
-        // Expand disk effect when hovering clickable items
         document.querySelectorAll('a, button').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 circle.style.width = '60px';
@@ -288,15 +335,14 @@
             el.addEventListener('mouseleave', () => {
                 circle.style.width = '40px';
                 circle.style.height = '40px';
-                circle.style.backgroundColor = 'rgba(192, 132, 252, 0.05)';
+                circle.style.backgroundColor = 'rgba(192, 132, 252, 0.04)';
             });
         });
 
-        // Typed effect animation
         const words = [
-            "Computer Science Engineering Student (EILCO)",
-            "Specialized in Data Science & Generative AI",
-            "Looking for a 4-month internship"
+            "Data Engineering Student",
+            "Specialized in AI & RAG Solutions",
+            "Seeking a 4-Month Internship"
         ];
         let wordIndex = 0;
         let charIndex = 0;
