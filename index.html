@@ -3,304 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fatima BOBOUH — Élève Ingénieure Data & IA</title>
+    <title>Fatima Bobouh — Data Engineer & AI Student</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Curseur personnalisé robuste (Point + Disque) */
         body {
-            background-color: #0b0f19;
+            background-color: #050508;
             color: #f3f4f6;
             font-family: system-ui, -apple-system, sans-serif;
+            cursor: default;
         }
-        .glow-cyan {
-            background: radial-gradient(circle at 20% 20%, rgba(6, 182, 212, 0.15), transparent 45%),
-                        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15), transparent 45%);
+        
+        #cursor-dot, #cursor-circle {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease-out;
         }
+
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #c084fc; /* Violet néon */
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #cursor-circle {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(192, 132, 252, 0.4);
+            background-color: rgba(192, 132, 252, 0.03);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* Effet de lueur violette en arrière-plan */
+        .glow-violet {
+            background: radial-gradient(circle at 15% 15%, rgba(147, 51, 234, 0.12), transparent 45%),
+                        radial-gradient(circle at 85% 85%, rgba(76, 29, 149, 0.1), transparent 50%);
+        }
+
         .typed-cursor {
-            border-right: 3px solid #06b6d4;
+            border-right: 3px solid #c084fc;
             animation: blink 0.75s step-end infinite;
         }
         @keyframes blink {
             from, to { border-color: transparent }
-            50% { border-color: #06b6d4; }
+            50% { border-color: #c084fc; }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between glow-cyan">
+<body class="min-h-screen flex flex-col justify-between glow-violet selection:bg-purple-500 selection:text-white">
 
-    <!-- Barre de Navigation -->
-    <nav class="sticky top-0 z-50 backdrop-blur-md bg-[#0b0f19]/80 border-b border-gray-800/60">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Éléments du curseur personnalisé -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-circle"></div>
+
+    <!-- Barre de navigation -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-[#050508]/80 border-b border-purple-900/20">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
             <div class="text-2xl font-black tracking-wider text-white">
-                FB<span class="text-cyan-400">.</span>
+                FB<span class="text-purple-500">.</span>
             </div>
-            <div class="hidden md:flex space-x-8 text-gray-300 font-medium text-sm">
-                <a href="#about" class="hover:text-cyan-400 transition">À propos</a>
-                <a href="#projects" class="hover:text-cyan-400 transition">Projets</a>
-                <a href="#skills" class="hover:text-cyan-400 transition">Compétences</a>
-                <a href="#experience" class="hover:text-cyan-400 transition">Parcours</a>
-                <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
-            </div>
+            <nav class="hidden md:flex space-x-8 text-gray-400 font-medium text-sm">
+                <a href="#about" class="hover:text-purple-400 transition">About</a>
+                <a href="#experience" class="hover:text-purple-400 transition">Experience</a>
+                <a href="#skills" class="hover:text-purple-400 transition">Skills</a>
+                <a href="#projects" class="hover:text-purple-400 transition">Projects</a>
+            </nav>
             <a href="https://github.com/fatimabobouh08" target="_blank" 
-               class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-5 py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition shadow-lg shadow-cyan-500/20">
-                Mon GitHub ↗
+               class="bg-purple-600 text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-purple-500 transition shadow-lg shadow-purple-600/30">
+                Resume ↗
             </a>
         </div>
-    </nav>
+    </header>
 
-    <!-- Section Accueil (Hero Section) -->
-    <section id="about" class="max-w-7xl mx-auto px-6 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-auto">
+    <!-- Section Principale (Hero) -->
+    <main class="max-w-7xl mx-auto px-6 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-auto w-full">
         
-        <!-- Gauche : Avatar & Textes -->
         <div class="lg:col-span-7 space-y-6">
-            <div class="flex items-center space-x-4 mb-2">
-                <!-- Avatar / Photo -->
-                <div class="relative w-16 h-16 rounded-full overflow-hidden border-2 border-cyan-400 shadow-md shadow-cyan-500/30">
-                    <img src="https://ui-avatars.com/api/?name=Fatima+Bobouh&background=06b6d4&color=fff&size=128" alt="Fatima Bobouh" class="w-full h-full object-cover">
-                </div>
-                <div>
-                    <div class="inline-flex items-center space-x-2 bg-cyan-950/60 text-cyan-400 border border-cyan-500/30 px-3 py-1 rounded-full text-xs font-semibold">
-                        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-ping"></span>
-                        <span>Recherche Stage PFA (Mai 2027)</span>
-                    </div>
-                    <h2 class="text-gray-400 text-sm font-medium mt-1">EILCO — 4ème année (Cycle Ingénieur)</h2>
-                </div>
+            <div class="inline-flex items-center space-x-2 bg-purple-950/40 text-purple-400 border border-purple-500/30 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+                <span class="w-2 h-2 bg-purple-500 rounded-full animate-ping"></span>
+                <span>Available for 4-month internship</span>
             </div>
 
-            <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-none text-white">
-                Fatima <br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">BOBOUH</span>
+            <h1 class="text-6xl md:text-8xl font-black tracking-tight leading-none text-white">
+                Fatima<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-indigo-500">BOBOUH</span>
             </h1>
 
-            <!-- Animation de texte dynamique -->
             <div class="h-10 flex items-center">
-                <span class="text-xl md:text-2xl font-mono text-cyan-300 font-bold">
+                <span class="text-lg md:text-xl font-mono text-purple-300 font-semibold">
                     <span id="typed-text"></span><span class="typed-cursor">&nbsp;</span>
                 </span>
             </div>
 
-            <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
-                "Je transforme les données en solutions concrètes." <br/>
-                Élève ingénieure passionnée par la <strong class="text-white">Data Science</strong> et l'<strong class="text-white">IA générative (LLM, RAG)</strong>. Je recherche un stage obligatoire (PFA) de 4 à 6 mois à partir de <strong class="text-cyan-400">Mai 2027</strong>.
+            <p class="text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl">
+                Je transforme les données en solutions concrètes. Élève ingénieure en informatique passionnée par la Data Science et l'IA générative (LLM, RAG).
             </p>
 
-            <div class="flex flex-wrap gap-4 pt-4">
-                <a href="#projects" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-3 rounded-lg font-bold flex items-center space-x-2 transition shadow-lg shadow-cyan-500/25">
-                    <span>Voir mes projets</span>
-                    <span>↓</span>
+            <div class="flex flex-wrap gap-4 pt-2">
+                <a href="#projects" class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-3.5 rounded-xl font-bold flex items-center space-x-2 transition shadow-lg shadow-purple-600/25">
+                    <span>View my work</span>
+                    <span>→</span>
                 </a>
-                <a href="https://github.com/fatimabobouh08" target="_blank" class="border border-gray-700 hover:border-cyan-400 text-gray-300 px-6 py-3 rounded-lg font-bold transition">
-                    Télécharger mon CV
+                <a href="mailto:fatimabobouh08@gmail.com" class="border border-purple-900/60 hover:border-purple-500 text-gray-300 px-6 py-3.5 rounded-xl font-bold transition bg-purple-950/10">
+                    Contact me
                 </a>
             </div>
         </div>
 
-        <!-- Droite : Cartes KPI & Info rapide -->
+        <!-- Statistiques / KPI Cartes -->
         <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-            <div class="bg-gray-900/60 border border-gray-800 p-6 rounded-2xl backdrop-blur-sm hover:border-cyan-500/50 transition">
-                <div class="text-3xl font-extrabold text-cyan-400">4ème</div>
-                <div class="text-sm text-gray-400 mt-1">Année Ingénieur à l'EILCO</div>
+            <div class="bg-purple-950/20 border border-purple-900/30 p-6 rounded-2xl backdrop-blur-sm">
+                <div class="text-3xl font-extrabold text-purple-400">4ème</div>
+                <div class="text-xs text-gray-400 mt-1">Année Ingénieur à l'EILCO</div>
             </div>
-            <div class="bg-gray-900/60 border border-gray-800 p-6 rounded-2xl backdrop-blur-sm hover:border-purple-500/50 transition">
-                <div class="text-3xl font-extrabold text-purple-400">RAG & LLM</div>
-                <div class="text-sm text-gray-400 mt-1">Spécialisation IA</div>
+            <div class="bg-purple-950/20 border border-purple-900/30 p-6 rounded-2xl backdrop-blur-sm">
+                <div class="text-3xl font-extrabold text-fuchsia-400">4 Mois</div>
+                <div class="text-xs text-gray-400 mt-1">Stage recherché</div>
             </div>
-            <div class="bg-gray-900/60 border border-gray-800 p-6 rounded-2xl backdrop-blur-sm hover:border-blue-500/50 transition col-span-2">
-                <div class="text-lg font-bold text-white mb-1">Stage PFA recherché</div>
-                <div class="text-sm text-gray-400">Durée : 4 à 6 mois (Dès Mai 2027)</div>
-                <div class="text-xs text-cyan-400 mt-2 font-mono">Domaines : Data Engineering, Data Science & IA</div>
+            <div class="bg-purple-950/20 border border-purple-900/30 p-6 rounded-2xl backdrop-blur-sm col-span-2">
+                <div class="text-lg font-bold text-white mb-1">Domaines d'expertise</div>
+                <div class="text-xs text-purple-300 font-mono">Data Engineering · IA · LLM / RAG · Full-Stack</div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Section About me -->
+    <section id="about" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-extrabold text-white mb-4 flex items-center space-x-3">
+                    <span class="text-purple-500">//</span> <span>About me</span>
+                </h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                    Élève ingénieure en informatique à l'EILCO, je me spécialise dans la conception de plateformes de données robustes, l'analyse avancée et les architectures d'intelligence artificielle.
+                </p>
+                <p class="text-gray-400 text-base leading-relaxed">
+                    Rigoureuse et curieuse, j'aime relever des défis techniques complexes, allant de l'ingestion de données massives au déploiement de modèles d'IA en production.
+                </p>
+            </div>
+            <div class="bg-purple-950/10 border border-purple-900/30 p-8 rounded-3xl space-y-4">
+                <div class="text-sm font-mono text-purple-400">// INFOS PERSONNELLES</div>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <span class="text-gray-500 block">Location</span>
+                        <span class="text-white font-medium">France</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-500 block">Email</span>
+                        <span class="text-white font-medium">fatimabobouh08@gmail.com</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-500 block">Formation</span>
+                        <span class="text-white font-medium">EILCO (Cycle Ingénieur)</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-500 block">Disponibilité</span>
+                        <span class="text-white font-medium">Stage 4 mois</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Projets Phares -->
-    <section id="projects" class="max-w-7xl mx-auto px-6 py-16 w-full">
+    <!-- Section Projets -->
+    <section id="projects" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/20">
         <h2 class="text-3xl font-extrabold text-white mb-2 flex items-center space-x-3">
-            <span class="text-cyan-400">//</span> <span>Projets Phares</span>
+            <span class="text-purple-500">//</span> <span>Projects</span>
         </h2>
-        <p class="text-gray-400 mb-10">Sélection de projets récents en IA, Data et Développement Web.</p>
+        <p class="text-gray-400 mb-10">Sélection de projets récents en IA, Data et Développement.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            <!-- Projet 1 -->
-            <div class="bg-gray-900/50 border border-gray-800 hover:border-cyan-500/60 p-6 rounded-2xl transition flex flex-col justify-between group">
+            <div class="bg-purple-950/10 border border-purple-900/30 hover:border-purple-500/60 p-6 rounded-2xl transition flex flex-col justify-between">
                 <div>
-                    <div class="flex justify-between items-start mb-3">
-                        <span class="text-xs font-mono bg-purple-950/80 text-purple-300 border border-purple-800 px-2.5 py-1 rounded-md">IA Générative</span>
-                        <a href="https://github.com/fatimabobouh08" target="_blank" class="text-gray-400 group-hover:text-cyan-400 transition text-sm">GitHub ↗</a>
-                    </div>
-                    <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition">Assistant d'Analyse Documentaire (RAG)</h3>
-                    <p class="text-gray-400 text-sm mt-2 leading-relaxed">
-                        Système intelligent permettant de poser des questions sur des documents volumineux grâce à une architecture RAG et un LLM local.
-                    </p>
+                    <span class="text-xs font-mono bg-purple-900/40 text-purple-300 px-3 py-1 rounded-md border border-purple-700/40">IA Générative</span>
+                    <h3 class="text-xl font-bold text-white mt-4">Assistant d'Analyse Documentaire (RAG)</h3>
+                    <p class="text-gray-400 text-sm mt-2">Système intelligent basé sur une architecture RAG et un LLM pour interroger des documentations techniques complexes.</p>
                 </div>
                 <div class="flex flex-wrap gap-2 mt-6">
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">Python</span>
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">LangChain</span>
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">LLM</span>
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">FastAPI</span>
+                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">Python</span>
+                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">LangChain</span>
+                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">FastAPI</span>
                 </div>
             </div>
 
-            <!-- Projet 2 -->
-            <div class="bg-gray-900/50 border border-gray-800 hover:border-cyan-500/60 p-6 rounded-2xl transition flex flex-col justify-between group">
+            <div class="bg-purple-950/10 border border-purple-900/30 hover:border-purple-500/60 p-6 rounded-2xl transition flex flex-col justify-between">
                 <div>
-                    <div class="flex justify-between items-start mb-3">
-                        <span class="text-xs font-mono bg-blue-950/80 text-blue-300 border border-blue-800 px-2.5 py-1 rounded-md">Data & Analytics</span>
-                        <a href="https://github.com/fatimabobouh08" target="_blank" class="text-gray-400 group-hover:text-cyan-400 transition text-sm">GitHub ↗</a>
-                    </div>
-                    <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition">Dashboard de Pilotage Stocks & Ventes</h3>
-                    <p class="text-gray-400 text-sm mt-2 leading-relaxed">
-                        Conception d'un tableau de bord interactif pour visualiser l'état des stocks et analyser la rentabilité des ventes en temps réel.
-                    </p>
+                    <span class="text-xs font-mono bg-purple-900/40 text-purple-300 px-3 py-1 rounded-md border border-purple-700/40">Data Analytics</span>
+                    <h3 class="text-xl font-bold text-white mt-4">Dashboard de Pilotage Stocks & Ventes</h3>
+                    <p class="text-gray-400 text-sm mt-2">Conception d'un tableau de bord décisionnel interactif pour le suivi en temps réel des performances commerciales.</p>
                 </div>
                 <div class="flex flex-wrap gap-2 mt-6">
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">SQL</span>
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">Python</span>
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">Power BI</span>
-                </div>
-            </div>
-
-            <!-- Projet 3 -->
-            <div class="bg-gray-900/50 border border-gray-800 hover:border-cyan-500/60 p-6 rounded-2xl transition flex flex-col justify-between group">
-                <div>
-                    <div class="flex justify-between items-start mb-3">
-                        <span class="text-xs font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-800 px-2.5 py-1 rounded-md">Machine Learning</span>
-                        <a href="https://github.com/fatimabobouh08" target="_blank" class="text-gray-400 group-hover:text-cyan-400 transition text-sm">GitHub ↗</a>
-                    </div>
-                    <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition">Détection d'Anomalies</h3>
-                    <p class="text-gray-400 text-sm mt-2 leading-relaxed">
-                        Mise en œuvre d'algorithmes de Machine Learning pour la détection automatique de comportements anormaux dans des jeux de données.
-                    </p>
-                </div>
-                <div class="flex flex-wrap gap-2 mt-6">
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">Python</span>
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">scikit-learn</span>
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">pandas</span>
-                </div>
-            </div>
-
-            <!-- Projet 4 -->
-            <div class="bg-gray-900/50 border border-gray-800 hover:border-cyan-500/60 p-6 rounded-2xl transition flex flex-col justify-between group">
-                <div>
-                    <div class="flex justify-between items-start mb-3">
-                        <span class="text-xs font-mono bg-amber-950/80 text-amber-300 border border-amber-800 px-2.5 py-1 rounded-md">Développement Web</span>
-                        <a href="https://github.com/fatimabobouh08" target="_blank" class="text-gray-400 group-hover:text-cyan-400 transition text-sm">GitHub ↗</a>
-                    </div>
-                    <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition">Application de Gestion de Stock</h3>
-                    <p class="text-gray-400 text-sm mt-2 leading-relaxed">
-                        Application web complète pour le suivi et la gestion automatisée des entrées/sorties d'inventaire.
-                    </p>
-                </div>
-                <div class="flex flex-wrap gap-2 mt-6">
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">Java Spring Boot</span>
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">React</span>
-                    <span class="text-xs bg-gray-800 text-cyan-300 px-2.5 py-1 rounded-md font-mono">SQL</span>
+                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">SQL</span>
+                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">Python</span>
+                    <span class="text-xs bg-black/40 text-purple-300 px-2.5 py-1 rounded font-mono">Power BI</span>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Section Compétences (Skills) -->
-    <section id="skills" class="max-w-7xl mx-auto px-6 py-16 w-full">
+    <!-- Section Skills & Tech Stack -->
+    <section id="skills" class="max-w-7xl mx-auto px-6 py-16 w-full border-t border-purple-900/20">
         <h2 class="text-3xl font-extrabold text-white mb-8 flex items-center space-x-3">
-            <span class="text-cyan-400">//</span> <span>Compétences Techniques</span>
+            <span class="text-purple-500">//</span> <span>Skills & Technologies</span>
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-gray-900/40 border border-gray-800 p-6 rounded-2xl">
-                <h3 class="text-lg font-bold text-cyan-400 mb-4">Langages</h3>
-                <ul class="space-y-2 text-gray-300 text-sm">
-                    <li class="flex items-center space-x-2"><span>•</span> <span>Python</span></li>
-                    <li class="flex items-center space-x-2"><span>•</span> <span>SQL</span></li>
-                    <li class="flex items-center space-x-2"><span>•</span> <span>Java</span></li>
-                    <li class="flex items-center space-x-2"><span>•</span> <span>C / C++</span></li>
-                    <li class="flex items-center space-x-2"><span>•</span> <span>JavaScript</span></li>
-                </ul>
+            <div class="bg-purple-950/10 border border-purple-900/30 p-6 rounded-2xl">
+                <h3 class="text-lg font-bold text-purple-400 mb-4">Programming & Frameworks</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Python</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">SQL</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Java</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">FastAPI</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Spring Boot</span>
+                </div>
             </div>
 
-            <div class="bg-gray-900/40 border border-gray-800 p-6 rounded-2xl">
-                <h3 class="text-lg font-bold text-purple-400 mb-4">Data & IA</h3>
-                <ul class="space-y-2 text-gray-300 text-sm">
-                    <li class="flex items-center space-x-2"><span>•</span> <span>LLM & RAG</span></li>
-                    <li class="flex items-center space-x-2"><span>•</span> <span>scikit-learn & pandas</span></li>
-                    <li class="flex items-center space-x-2"><span>•</span> <span>Power BI</span></li>
-                    <li class="flex items-center space-x-2"><span>•</span> <span>Excel avancé</span></li>
-                </ul>
+            <div class="bg-purple-950/10 border border-purple-900/30 p-6 rounded-2xl">
+                <h3 class="text-lg font-bold text-fuchsia-400 mb-4">Data & AI</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">LLMs & RAG</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">pandas</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">scikit-learn</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Power BI</span>
+                </div>
             </div>
 
-            <div class="bg-gray-900/40 border border-gray-800 p-6 rounded-2xl">
-                <h3 class="text-lg font-bold text-blue-400 mb-4">Outils & DevOps</h3>
-                <ul class="space-y-2 text-gray-300 text-sm">
-                    <li class="flex items-center space-x-2"><span>•</span> <span>Git & GitHub</span></li>
-                    <li class="flex items-center space-x-2"><span>•</span> <span>Docker</span></li>
-                    <li class="flex items-center space-x-2"><span>•</span> <span>Linux</span></li>
-                    <li class="flex items-center space-x-2"><span>•</span> <span>CI / CD</span></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Parcours (Timeline) -->
-    <section id="experience" class="max-w-7xl mx-auto px-6 py-16 w-full">
-        <h2 class="text-3xl font-extrabold text-white mb-8 flex items-center space-x-3">
-            <span class="text-cyan-400">//</span> <span>Mon Parcours</span>
-        </h2>
-
-        <div class="border-l-2 border-gray-800 pl-6 space-y-8 ml-2">
-            <div>
-                <span class="text-xs font-mono text-cyan-400">2025 - 2028</span>
-                <h3 class="text-lg font-bold text-white">Cycle Ingénieur Informatique</h3>
-                <p class="text-sm text-gray-400">EILCO — École d'Ingénieurs du Littoral Côte d'Opale (Calais)</p>
-            </div>
-            <div>
-                <span class="text-xs font-mono text-purple-400">2026</span>
-                <h3 class="text-lg font-bold text-white">Stage Développement Java</h3>
-                <p class="text-sm text-gray-400">Capgemini</p>
-            </div>
-            <div>
-                <span class="text-xs font-mono text-blue-400">2025</span>
-                <h3 class="text-lg font-bold text-white">Expérience en Grande Distribution</h3>
-                <p class="text-sm text-gray-400">Carrefour</p>
-            </div>
-            <div>
-                <span class="text-xs font-mono text-gray-500">2023 - 2025</span>
-                <h3 class="text-lg font-bold text-white">CPGE PSI (Classes Préparatoires)</h3>
-                <p class="text-sm text-gray-400">Lycée Chrestien de Troyes</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Contact -->
-    <section id="contact" class="max-w-7xl mx-auto px-6 py-16 w-full text-center">
-        <div class="bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-800 p-10 rounded-3xl">
-            <h2 class="text-3xl font-extrabold text-white mb-4">Travaillons ensemble !</h2>
-            <p class="text-gray-400 max-w-xl mx-auto mb-8">
-                À la recherche d'un stage de fin d'année (PFA) de 4 à 6 mois à partir de Mai 2027. N'hésitez pas à me contacter !
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="mailto:fatimabobouh08@gmail.com" class="bg-cyan-500 text-slate-950 font-bold px-6 py-3 rounded-lg hover:bg-cyan-400 transition">
-                    Me contacter par Email
-                </a>
-                <a href="https://github.com/fatimabobouh08" target="_blank" class="border border-gray-700 text-gray-300 font-bold px-6 py-3 rounded-lg hover:border-cyan-400 transition">
-                    Mon Profil GitHub
-                </a>
+            <div class="bg-purple-950/10 border border-purple-900/30 p-6 rounded-2xl">
+                <h3 class="text-lg font-bold text-indigo-400 mb-4">Tools & Cloud</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Git / GitHub</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Docker</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">Linux</span>
+                    <span class="bg-purple-950/40 text-purple-200 border border-purple-800/40 px-3 py-1 rounded-lg text-xs font-mono">CI/CD</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-6 text-gray-600 text-sm border-t border-gray-900">
-        © 2026 Fatima BOBOUH. Déployé avec GitHub Pages.
+    <footer class="text-center py-8 text-gray-500 text-sm border-t border-purple-900/20">
+        <p>© 2026 Fatima Bobouh. Designed with passion.</p>
+        <p class="mt-1 text-purple-400 font-mono text-xs">fatimabobouh08@gmail.com</p>
     </footer>
 
-    <!-- Script d'animation de texte -->
+    <!-- Script JavaScript pour le curseur robuste et le texte dynamique -->
     <script>
+        // Gestion du curseur personnalisé
+        const dot = document.getElementById('cursor-dot');
+        const circle = document.getElementById('cursor-circle');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            dot.style.transform = `translate(${posX}px, ${posY}px)`;
+            
+            // Effet d'inertie fluide sur le cercle externe
+            circle.style.transform = `translate(${posX}px, ${posY}px)`;
+        });
+
+        // Effet d'écriture automatique (Typed effect)
         const words = [
-            "Élève Ingénieure en Informatique",
-            "Passionnée par la Data & l'IA",
-            "Développeuse LLM & RAG"
+            "Élève Ingénieure en Informatique (EILCO)",
+            "Spécialisée en Data Science & IA Générative",
+            "À la recherche d'un stage de 4 mois"
         ];
         let wordIndex = 0;
         let charIndex = 0;
